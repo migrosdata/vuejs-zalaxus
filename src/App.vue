@@ -58,7 +58,10 @@ export default {
     //
   }),
   mounted() {
-    this.axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then((response) => {
+    this.axios.post('https://dataiku.hes-so.ch:8080/public/api/v1/cheapflixani/movies/lookup',
+    { "data" : {
+    
+    }}).then((response) => {
       console.log(response.data)
     });
   }
