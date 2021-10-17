@@ -23,61 +23,55 @@
         <h2 class="headline font-weight-bold mb-3">
         Saisir les données d'un client
         </h2>
-
-        <v-row justify="center">
-<v-form
-      ref="form"
-      v-model="valid"
-      lazy-validation
-    >
-          <v-text-field
-        v-model="code"        
-        label="Code Client"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="name"
-        :counter="10"
-        :rules="nameRules"
-        label="Nom"
-        required
-      ></v-text-field>
-  
-      <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        label="E-mail"
-        required
-      ></v-text-field>
+        <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+          >
+            <v-text-field
+              v-model="code"        
+              label="Code Client"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="name"
+              :counter="10"
+              :rules="nameRules"
+              label="Nom"
+              required
+            ></v-text-field>
         
- 
-      <v-btn
-        :disabled="!valid"
-        color="success"
-        class="mr-4"
-        @click="validate"
-      >
-        Soumettre
-      </v-btn>
-  
-      <v-btn
-        color="error"
-        class="mr-4"
-        @click="reset"
-      >
-        Reset</v-btn>
-  
-      <v-btn
-        color="warning"
-        @click="resetValidation"
-      >
-        Reset Validation
-      </v-btn>
-    </v-form>
-        </v-row>
-      </v-col>
-
-
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>  
+      
+            <v-btn
+              :disabled="!valid"
+              color="success"
+              class="mr-4"
+              @click="validate"
+            >
+              Soumettre
+            </v-btn>
+        
+            <v-btn
+              color="error"
+              class="mr-4"
+              @click="reset"
+            >
+              Reset</v-btn>
+        
+            <v-btn
+              color="warning"
+              @click="resetValidation"
+            >
+              Reset Validation
+            </v-btn>
+          </v-form>
+        </v-col>
     </v-row>
   </v-container>
 </template>
