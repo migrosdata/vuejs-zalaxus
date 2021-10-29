@@ -1,5 +1,7 @@
-import Home from '../components/Home';
 import About from '../components/About';
+import Form from '../components/Form';
+import Home from '../components/Home';
+
 
 export default [
   {
@@ -10,4 +12,8 @@ export default [
     path: '/about',
     component: About
   },
+  {
+    path: '/form',
+    component: Form
+  },  
 ];
