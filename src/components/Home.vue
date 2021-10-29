@@ -30,12 +30,13 @@
           >
             <v-select
               :items="['North America', 'Europe', 'Pacific']"
+              :rules="[v => !!v || 'Region is required']"
               filled
               label="Region"
             ></v-select>  
             <v-text-field
               v-model="age"
-              :rules="nameRules"
+              :rules="ageRules"
               label="Age"
               type="number"
               min="0"
@@ -44,11 +45,13 @@
             ></v-text-field>        
             <v-select
               :items="['Single', 'Married']"
+              :rules="[v => !!v || 'Marital status is required']"              
               filled
               label="Marital Status"
             ></v-select>              
             <v-select
               :items="['F', 'M']"
+              :rules="[v => !!v || 'Gender is required']"
               filled
               label="Gender"
             ></v-select>               
@@ -75,6 +78,7 @@
             ></v-text-field>     
             <v-select
               :items="['Partial High School', 'High School', 'Partial College', 'Bachelors', 'Graduate Degree']"
+              :rules="[v => !!v || 'Education is required']"
               filled
               label="Education"
             ></v-select>                     
@@ -112,6 +116,7 @@
             ></v-slider>
             <v-select
               :items="['0-1 Miles', '1-2 Miles', '2-5 Miles', '5-10 Miles', '10+ Miles']"
+              :rules="[v => !!v || 'Commute Distance is required']"
               filled
               label="Commute Distance"
             ></v-select>    
@@ -127,11 +132,11 @@
             ></v-text-field>
             <v-select
               :items="['Protestantism', 'Roman Catholicism', 'No religion']"
+              :rules="[v => !!v || 'Religion is required']"
               filled
               label="Religion"
             ></v-select>               
             <v-btn
-              :disabled="!valid"
               color="success"
               class="mr-4"
               @click="validate"
@@ -161,9 +166,16 @@
 <script>
   export default {
     name: 'Home',
-
     data: () => ({
-      //
+      ageRules: [
+        v => v.length > 0 || 'Age is required',        
+        v => (v && Number.isInteger(Number(v))) || 'Age must be an integer',
+      ],
     }),
+    methods: {
+      validate () {
+        this.$refs.form.validate()
+      },
+    }
   }
 </script>
