@@ -6,6 +6,8 @@ import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import i18n from './i18n'
+import CountryFlag from 'vue-country-flag'
+Vue.component('country-flag', CountryFlag)
 
 Vue.use(VueAxios, axios)
 
