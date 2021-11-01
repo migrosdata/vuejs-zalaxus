@@ -16,14 +16,6 @@ export default {
 
   data: () => ({
     //
-  }),
-  mounted() {
-    this.axios.post('https://dataiku.hes-so.ch:8080/public/api/v1/cheapflixani/movies/lookup',
-    { "data" : {
-    
-    }}).then((response) => {
-      console.log(response.data)
-    });
-  }
+  })
 };
 </script>
