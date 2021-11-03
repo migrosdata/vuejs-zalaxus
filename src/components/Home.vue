@@ -22,7 +22,7 @@
       >
         <zalaxus-form v-if="showForm" v-on:submit="submitHandler"></zalaxus-form>
         <error v-if="showError"></error>
-        <result v-if="showResult"></result>
+        <result v-if="showResult" :reponse="dataikuResponse" v-on:restart="restartHandler"></result>
         <spinner v-if="showSpinner"></spinner>
       </v-col>
     </v-row>
@@ -47,23 +47,31 @@
       showForm: true,
       showResult: false,
       showSpinner: false,
+      dataikuResponse : null
     }),
     methods: {
-      submitHandler() {
+      submitHandler(form) {
         this.showForm = false;
         this.showSpinner = true;
-        this.axios.post('https://dataiku.hes-so.ch:8080/public/api/v1/cheapflixani/movies/lookup', { 
-            "data" : {
-            }
-          }).then((response) => {
+        const features = `{ "features" : ${JSON.stringify(form, null, ' ')} }`;      
+        this.axios.post('https://dataiku.hes-so.ch:8080/public/api/v1/zalaxus01/bikebuyingprediction/predict', features).then((response) => {
+            this.dataikuResponse = response.data;
             console.log(response.data)
-            this.showSpinner = true;            
+            this.showSpinner = false;
+            this.showResult = true;
 
           }).catch(error => {
+            this.showSpinner = false;
             this.showError = true;
             console.log(error);
           });
-      }
+        
+      },
+      restartHandler() {        
+        this.showResult = false;
+        this.dataikuResponse = null;
+        this.showForm = true;
     }
+    },
   }
 </script>
