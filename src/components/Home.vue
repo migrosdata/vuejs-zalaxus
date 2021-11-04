@@ -9,7 +9,8 @@
           height="270"
         />
       </v-col>
-
+    </v-row>
+    <v-row class="text-center">
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
           Welcome to Zalaxus AI App
@@ -20,10 +21,12 @@
         class="mb-5"
         cols="12"
       >
-        <zalaxus-form v-if="showForm" v-on:submit="submitHandler"></zalaxus-form>
-        <error v-if="showError"></error>
-        <result v-if="showResult" :reponse="dataikuResponse" v-on:restart="restartHandler"></result>
-        <spinner v-if="showSpinner"></spinner>
+        <transition name="fade">
+          <zalaxus-form v-if="showForm" v-on:submit="submitHandler"></zalaxus-form>
+          <error v-if="showError"></error>
+          <result v-if="showResult" :reponse="dataikuResponse" v-on:restart="restartHandler"></result>
+          <spinner v-if="showSpinner"></spinner>
+         </transition>
       </v-col>
     </v-row>
   </v-container>
@@ -75,3 +78,11 @@
     },
   }
 </script>
+<style>
+   .fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+   }
+   .fade-enter-active, .fade-leave-active /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
+   }
+</style>
