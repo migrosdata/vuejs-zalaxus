@@ -6,7 +6,7 @@
           >
             <v-select
               v-model="form.Region"
-              :items="['North America', 'Europe', 'Pacific']"
+              :items="this.regions"
               :rules="[v => !!v || 'Region is required']"
               label="Region"
             ></v-select>  
@@ -21,13 +21,13 @@
             ></v-text-field>        
             <v-select
               v-model="form.MaritalStatus"
-              :items="['Single', 'Married']"
+              :items="this.maritalStatuses"
               :rules="[v => !!v || 'Marital status is required']"              
               label="Marital Status"
             ></v-select>              
             <v-select
               v-model="form.Gender"
-              :items="['F', 'M']"
+              :items="this.genders"
               :rules="[v => !!v || 'Gender is required']"
               label="Gender"
             ></v-select>               
@@ -57,7 +57,7 @@
             ></v-text-field>     
             <v-select
               v-model="form.EnglishEducation"
-              :items="['Partial High School', 'High School', 'Partial College', 'Bachelors', 'Graduate Degree']"
+              :items="this.englishEducations"
               :rules="[v => !!v || 'Education is required']"
               label="Education"
             ></v-select>                     
@@ -85,7 +85,7 @@
             ></v-text-field>
             <v-select
               v-model="form.CommuteDistance"
-              :items="['0-1 Miles', '1-2 Miles', '2-5 Miles', '5-10 Miles', '10+ Miles']"
+              :items="this.commuteDistances"
               :rules="[v => !!v || 'Commute Distance is required']"
               label="Commute Distance"
             ></v-select>    
@@ -105,7 +105,7 @@
             ></v-text-field>
             <v-select
               v-model="form.Religion"
-              :items="['Protestantism', 'Roman Catholicism', 'No religion']"
+              :items="this.religions"
               :rules="[v => !!v || 'Religion is required']"
               label="Religion"
             ></v-select>               
@@ -136,6 +136,32 @@ export default {
       v => (v && Number.isInteger(Number(v))) || 'Age must be an integer',
     ],
   }),
+  props: {
+    regions: {
+        type: Array,
+        required: false
+    },
+    maritalStatuses: {
+        type: Array,
+        required: false
+    },
+    genders: {
+        type: Array,
+        required: false
+    },
+    englishEducations: {
+        type: Array,
+        required: false
+    },
+    commuteDistances: {
+        type: Array,
+        required: false
+    },
+    religions: {
+        type: Array,
+        required: false
+    },    
+  },
   methods: {
     validate: function () {
       this.$emit('submit', this.form);

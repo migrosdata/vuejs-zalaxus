@@ -22,7 +22,16 @@
         cols="12"
       >
         <transition name="fade">
-          <zalaxus-form v-if="showForm" v-on:submit="submitHandler"></zalaxus-form>
+          <zalaxus-form 
+            v-if="showForm" 
+            v-on:submit="submitHandler"
+            :regions="this.regions"
+            :maritalStatuses="this.maritalStatuses"
+            :genders="this.genders"
+            :englishEducations="this.englishEducations"
+            :commuteDistances="this.commuteDistances"
+            :religions="this.religions"
+          ></zalaxus-form>
           <error v-if="showError"></error>
           <result v-if="showResult" :reponse="dataikuResponse" v-on:restart="restartHandler"></result>
           <spinner v-if="showSpinner"></spinner>
@@ -50,7 +59,13 @@
       showForm: true,
       showResult: false,
       showSpinner: false,
-      dataikuResponse : null
+      dataikuResponse : null,
+      regions: ['North America', 'Europe', 'Pacific'],
+      maritalStatuses: ['Single', 'Married'],
+      genders: ['F', 'M'],
+      englishEducations: ['Partial High School', 'High School', 'Partial College', 'Bachelors', 'Graduate Degree'],
+      commuteDistances: ['0-1 Miles', '1-2 Miles', '2-5 Miles', '5-10 Miles', '10+ Miles'],
+      religions: ['Protestantism', 'Roman Catholicism', 'No religion'],
     }),
     methods: {
       submitHandler(form) {
@@ -67,15 +82,40 @@
             this.showSpinner = false;
             this.showError = true;
             console.log(error);
-          });
-        
+          });        
       },
       restartHandler() {        
         this.showResult = false;
         this.dataikuResponse = null;
         this.showForm = true;
-    }
+      },
+      loadFormData() {
+        const regionsRequest = this.axios.get('https://httpbin.org/get');
+        const maritalStatusRequest = this.axios.get('https://httpbin.org/get');
+        const gendersRequest = this.axios.get('https://httpbin.org/get');
+        const englishEducationsRequest = this.axios.get('https://httpbin.org/get');
+        const commuteDistancesRequest = this.axios.get('https://httpbin.org/get');
+        const religionsRequest = this.axios.get('https://httpbin.org/get');
+
+        // you could also use destructuring to have an array of responses
+        this.axios.all([regionsRequest, maritalStatusesRequest, gendersRequest, englishEducationsRequest, commuteDistancesRequest, religionsRequest])
+        .then(this.axios.spread(function(regionsResults, maritalStatusesResult, gendersResult, englishEducationsResult, commuteDistancesResult, religionsResult) {
+          this.regions = regionsResults.data;
+          this.maritalStatuses = maritalStatusesResult.data;
+          this.genders = gendersResult.data;
+          this.englishEducations = englishEducationsResult.data;
+          this.commuteDistances = commuteDistancesResult.data;
+          this.religions = religionsResult.data;
+          this.showForm = true;
+        })).catch(error => {
+          this.showError = true;
+          console.log(error);
+        });
+      },
     },
+    mounted() {
+      //this.loadFormData();
+    }
   }
 </script>
 <style>
