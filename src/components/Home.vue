@@ -16,7 +16,8 @@
           Welcome to Zalaxus AI App
         </h1>
       </v-col>
-
+    </v-row>
+    <v-row class="text-center">
       <v-col
         class="mb-5"
         cols="12"
