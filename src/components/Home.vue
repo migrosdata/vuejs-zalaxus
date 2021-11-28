@@ -91,7 +91,7 @@
       },
       loadFormData() {
         const regionsRequest = this.axios.get('https://httpbin.org/get');
-        const maritalStatusesResult = this.axios.get('https://httpbin.org/get');
+        const maritalStatusesRequest = this.axios.get('https://httpbin.org/get');
         const gendersRequest = this.axios.get('https://httpbin.org/get');
         const englishEducationsRequest = this.axios.get('https://httpbin.org/get');
         const commuteDistancesRequest = this.axios.get('https://httpbin.org/get');
