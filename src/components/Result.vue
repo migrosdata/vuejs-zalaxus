@@ -1,12 +1,22 @@
 <template>
   <div>
-    <v-img
-        :src="require('../assets/cup.png')"
-        height="400"
-        contain
-    />
-    <h1>{{ this.reponse.result.prediction}}</h1>
-    <div>probaPercentile {{ this.reponse.result.probaPercentile}}</div>
+    <div v-if="this.reponse.result.prediction == 1">
+        <v-img
+            :src="require('../assets/cup.png')"
+            height="400"
+            contain
+        />
+    </div>
+    <div v-else>
+        <v-img
+            :src="require('../assets/fail.png')"
+            height="400"
+            contain
+        />
+    </div>
+
+    <div>{{ this.reponse.result.probaPercentile}} % </div>
+
     <v-btn
         @click="restart"
     >
