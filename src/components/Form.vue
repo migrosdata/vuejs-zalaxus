@@ -3,15 +3,6 @@
     <v-container>
       <v-row>
         <v-col cols="12" md="4">
-          <v-select
-            prepend-icon="mdi-earth"
-            v-model="form.Region"
-            :items="this.regions"
-            :rules="[(v) => !!v || 'Region is required']"
-            :label="$t('region')"
-          ></v-select>
-        </v-col>
-        <v-col cols="12" md="4">
           <v-text-field
             prepend-icon="mdi-calendar"
             v-model.number="form.Age"
@@ -21,27 +12,7 @@
             min="0"
             step="1"
             required
-          ></v-text-field>
-        </v-col>
-        <v-col cols="12" md="4">
-          <v-select
-            prepend-icon="mdi-lock"
-            v-model="form.MaritalStatus"
-            :items="this.maritalStatuses"
-            :rules="[(v) => !!v || 'Marital status is required']"
-            :label="$t('maritalStatus')"
-          ></v-select>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" md="4">
-          <v-select
-            prepend-icon="mdi-human"
-            v-model="form.Gender"
-            :items="this.genders"
-            :rules="[(v) => !!v || 'Gender is required']"
-            label="Gender"
-          ></v-select>
+          ></v-text-field>          
         </v-col>
         <v-col cols="12" md="4">
           <v-text-field
@@ -56,6 +27,19 @@
         </v-col>
         <v-col cols="12" md="4">
           <v-text-field
+            prepend-icon="mdi-car"
+            v-model.number="form.NumberCarsOwned"
+            :rules="numberCarsOwned"
+            :label="$t('numberCarsOwned')"
+            required
+            type="number"
+            min="0"
+          ></v-text-field>
+        </v-col>  
+      </v-row>
+      <v-row>              
+        <v-col cols="12" md="4">
+          <v-text-field
             prepend-icon="mdi-baby-face"
             v-model.number="form.TotalChildren"
             :rules="totalChildren"
@@ -63,10 +47,8 @@
             required
             type="number"
             min="0"
-          ></v-text-field>
+          ></v-text-field>          
         </v-col>
-      </v-row>
-      <v-row>
         <v-col cols="12" md="4">
           <v-text-field
             prepend-icon="mdi-bed"
@@ -76,7 +58,28 @@
             required
             type="number"
             min="0"
-          ></v-text-field>
+          ></v-text-field>          
+        </v-col>
+
+        <v-col cols="12" md="4">
+          <v-select
+            prepend-icon="mdi-lock"
+            v-model="form.MaritalStatus"
+            :items="$t('maritalStatus.items')"
+            :rules="[(v) => !!v || 'Marital status is required']"
+            :label="$t('maritalStatus.label')"
+          ></v-select>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" md="4">
+          <v-select
+            prepend-icon="mdi-human"
+            v-model="form.Gender"
+            :items="this.genders"
+            :rules="[(v) => !!v || 'Gender is required']"
+            label="Gender"
+          ></v-select>
         </v-col>
         <v-col cols="12" md="4">
           <v-select
@@ -110,15 +113,13 @@
           ></v-checkbox>
         </v-col>
         <v-col cols="12" md="4">
-          <v-text-field
-            prepend-icon="mdi-car"
-            v-model.number="form.NumberCarsOwned"
-            :rules="numberCarsOwned"
-            :label="$t('numberCarsOwned')"
-            required
-            type="number"
-            min="0"
-          ></v-text-field>
+          <v-select
+            prepend-icon="mdi-earth"
+            v-model="form.Region"
+            :items="this.regions"
+            :rules="[(v) => !!v || 'Region is required']"
+            :label="$t('region')"
+          ></v-select>
         </v-col>
         <v-col cols="12" md="4">
           <v-select

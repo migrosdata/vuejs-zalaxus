@@ -1,7 +1,13 @@
 {
   "message": "hello i18n !!",
   "region": "Region",
-  "maritalStatus" : "Marital Status",
+  "maritalStatus" : { 
+    "label": "Marital Status",
+    "items": [
+      {"text":"Single", "value": "Single"},
+      {"text":"Married", "value": "Married"}
+    ]
+  },
   "yearlyIncome" : "Yearly Income",
   "numberCarsOwned": "# cars owned",
   "numberChildrenAtHome": "Number children at home",

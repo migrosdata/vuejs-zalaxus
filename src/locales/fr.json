@@ -1,7 +1,13 @@
 {
     "message": "bonjour i18n !!",
     "region": "Région",
-    "maritalStatus" : "Etat civil",
+    "maritalStatus" : { 
+        "label": "Etat civil",
+        "items": [
+          {"text":"Célibataire", "value": "Single"},
+          {"text":"Marié", "value": "Married"}
+        ]
+    },
     "yearlyIncome" : "Revennu annuel",
     "numberCarsOwned": "Nombre de véhicules",
     "numberChildrenAtHome": "Nombre d'enfant à la maison",
