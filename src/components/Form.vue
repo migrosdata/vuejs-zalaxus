@@ -8,7 +8,7 @@
             v-model="form.Region"
             :items="this.regions"
             :rules="[(v) => !!v || 'Region is required']"
-            label="Region"
+            :label="$t('region')"
           ></v-select>
         </v-col>
         <v-col cols="12" md="4">
@@ -29,7 +29,7 @@
             v-model="form.MaritalStatus"
             :items="this.maritalStatuses"
             :rules="[(v) => !!v || 'Marital status is required']"
-            label="Marital Status"
+            :label="$t('maritalStatus')"
           ></v-select>
         </v-col>
       </v-row>
@@ -48,7 +48,7 @@
             prepend-icon="mdi-currency-usd"
             v-model.number="form.YearlyIncome"
             :rules="yearlyIncome"
-            label="Yearly Income"
+            :label="$t('yearlyIncome')"
             required
             type="number"
             min="0"
@@ -59,7 +59,7 @@
             prepend-icon="mdi-baby-face"
             v-model.number="form.TotalChildren"
             :rules="totalChildren"
-            label="Total Children"
+            :label="$t('totalChildren')"
             required
             type="number"
             min="0"
@@ -72,7 +72,7 @@
             prepend-icon="mdi-bed"
             v-model.number="form.NumberChildrenAtHome"
             :rules="numberChildrenAtHome"
-            label="Number children at home"
+            :label="$t('numberChildrenAtHome')"
             required
             type="number"
             min="0"
@@ -114,7 +114,7 @@
             prepend-icon="mdi-car"
             v-model.number="form.NumberCarsOwned"
             :rules="numberCarsOwned"
-            label="# cars Owned"
+            :label="$t('numberCarsOwned')"
             required
             type="number"
             min="0"

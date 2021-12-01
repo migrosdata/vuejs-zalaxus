@@ -1,3 +1,9 @@
 {
-  "message": "hello i18n !!"
+  "message": "hello i18n !!",
+  "region": "Region",
+  "maritalStatus" : "Marital Status",
+  "yearlyIncome" : "Yearly Income",
+  "numberCarsOwned": "# cars owned",
+  "numberChildrenAtHome": "Number children at home",
+  "totalChildren": "Total children"  
 }

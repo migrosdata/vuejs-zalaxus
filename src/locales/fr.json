@@ -1,0 +1,9 @@
+{
+    "message": "bonjour i18n !!",
+    "region": "Région",
+    "maritalStatus" : "Etat civil",
+    "yearlyIncome" : "Revennu annuel",
+    "numberCarsOwned": "Nombre de véhicules",
+    "numberChildrenAtHome": "Nombre d'enfant à la maison",
+    "totalChildren": "Nombre total d'enfant"
+  }
