@@ -11,5 +11,8 @@
   "yearlyIncome" : "Yearly Income",
   "numberCarsOwned": "# cars owned",
   "numberChildrenAtHome": "Number children at home",
-  "totalChildren": "Total children"  
+  "totalChildren": "Total children",
+  "homeMessage" : "Welcome to Zalaxus ML",
+  "welcomeMessage" : "Discover your next customer",
+  "predictButton" : "Predict"
 }
